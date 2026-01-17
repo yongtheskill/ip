@@ -37,6 +37,10 @@ public class Parser {
             return parseEventCommand(cmd);
         }
 
+        if (cmd.equals("delete") || cmd.startsWith("delete ")) {
+            return parseDeleteCommand(cmd);
+        }
+
         throw new UnknownCommandException("I don't understand that command! Please try again.");
     }
 
@@ -126,5 +130,21 @@ public class Parser {
             throw new InvalidParameterException("The event end time cannot be empty!");
         }
         return new EventCommand(parts[0].trim(), parts[1].trim(), parts[2].trim());
+    }
+
+    private static Command parseDeleteCommand(String cmd) throws InvalidParameterException {
+        if (cmd.equals("delete")) {
+            throw new InvalidParameterException("Please specify a task number to delete!");
+        }
+        String indexStr = cmd.substring(7).trim();
+        if (indexStr.isEmpty()) {
+            throw new InvalidParameterException("Please specify a task number to delete!");
+        }
+        try {
+            int index = Integer.parseInt(indexStr);
+            return new DeleteCommand(index);
+        } catch (NumberFormatException e) {
+            throw new InvalidParameterException("Task number must be a valid integer!");
+        }
     }
 }

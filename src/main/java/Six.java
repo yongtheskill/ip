@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import commands.Command;
+import tasks.TaskList;
 
 public class Six {
     public static void main(String[] args) {
@@ -11,12 +12,13 @@ public class Six {
         System.out.println(intro);
 
         boolean exit = false;
+        TaskList tasks = new TaskList();
 
         Scanner scanner = new Scanner(System.in);
         while (!exit) {
             String cmd = scanner.nextLine();
             Command command = Parser.parse(cmd);
-            command.execute();
+            command.execute(tasks);
             exit = command.isBye();
         }
         scanner.close();

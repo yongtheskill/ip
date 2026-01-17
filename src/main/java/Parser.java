@@ -5,6 +5,9 @@ public class Parser {
         if (cmd.equals("bye")) {
             return new ByeCommand();
         }
-        return new EchoCommand(cmd);
+        if (cmd.equals("list")) {
+            return new ListCommand();
+        }
+        return new AddCommand(cmd);
     }
 }

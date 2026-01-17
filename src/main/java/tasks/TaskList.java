@@ -1,5 +1,7 @@
 package tasks;
 
+import exceptions.InvalidParameterException;
+
 public class TaskList {
     private Task[] tasks;
     private int size;
@@ -20,7 +22,11 @@ public class TaskList {
         return currentTasks;
     }
 
-    public Task getTask(int index) {
+    public Task getTask(int index) throws InvalidParameterException {
+        if (index < 0 || index >= this.size) {
+            throw new InvalidParameterException(
+                    "Task number is out of range! Please enter a valid task number (1 to " + this.size + ").");
+        }
         return this.tasks[index];
     }
 

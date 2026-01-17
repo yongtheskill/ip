@@ -1,10 +1,11 @@
 package commands;
 
 import tasks.*;
+import exceptions.InvalidParameterException;
 
 public class ListCommand extends Command {
     @Override
-    public void execute(TaskList tasks) {
+    public void execute(TaskList tasks) throws InvalidParameterException {
         if (tasks.getSize() == 0) {
             Command.printMessage("Your task list is empty.");
             return;

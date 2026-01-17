@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 import commands.Command;
 import tasks.TaskList;
+import exceptions.SixException;
 
 public class Six {
     public static void main(String[] args) {
@@ -16,10 +17,16 @@ public class Six {
 
         Scanner scanner = new Scanner(System.in);
         while (!exit) {
-            String cmd = scanner.nextLine();
-            Command command = Parser.parse(cmd);
-            command.execute(tasks);
-            exit = command.isBye();
+            try {
+                String cmd = scanner.nextLine();
+                Command command = Parser.parse(cmd);
+                command.execute(tasks);
+                exit = command.isBye();
+            } catch (SixException e) {
+                System.out.println("    ____________________________________________________________");
+                System.out.println("     OOPS!!! " + e.getMessage());
+                System.out.println("    ____________________________________________________________\n");
+            }
         }
         scanner.close();
     }

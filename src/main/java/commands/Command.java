@@ -1,9 +1,10 @@
 package commands;
 
 import tasks.TaskList;
+import exceptions.SixException;
 
 public abstract class Command {
-    public abstract void execute(TaskList tasks);
+    public abstract void execute(TaskList tasks) throws SixException;
 
     public boolean isBye() {
         return false;

@@ -9,11 +9,24 @@ public class Parser {
             return new ListCommand();
 
         if (cmd.startsWith("mark "))
-            return new MarkCommand(cmd.substring(5).trim());
+            return new MarkCommand(Integer.parseInt(cmd.substring(5).trim()));
 
         if (cmd.startsWith("unmark "))
-            return new UnmarkCommand(cmd.substring(7).trim());
+            return new UnmarkCommand(Integer.parseInt(cmd.substring(7).trim()));
 
-        return new AddCommand(cmd);
+        if (cmd.startsWith("todo "))
+            return new TodoCommand(cmd.substring(5).trim());
+
+        if (cmd.startsWith("deadline ")) {
+            String[] parts = cmd.substring(9).split(" /by ");
+            return new DeadlineCommand(parts[0].trim(), parts[1].trim());
+        }
+
+        if (cmd.startsWith("event ")) {
+            String[] parts = cmd.substring(6).split(" /from | /to ");
+            return new EventCommand(parts[0].trim(), parts[1].trim(), parts[2].trim());
+        }
+
+        return new TodoCommand(cmd);
     }
 }

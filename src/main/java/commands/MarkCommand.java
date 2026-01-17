@@ -5,8 +5,8 @@ import tasks.*;
 public class MarkCommand extends Command {
     private final int idx;
 
-    public MarkCommand(String idx) {
-        this.idx = Integer.parseInt(idx) - 1;
+    public MarkCommand(int idx) {
+        this.idx = idx - 1;
     }
 
     @Override

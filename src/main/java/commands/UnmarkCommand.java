@@ -5,8 +5,8 @@ import tasks.*;
 public class UnmarkCommand extends Command {
     private final int idx;
 
-    public UnmarkCommand(String idx) {
-        this.idx = Integer.parseInt(idx) - 1;
+    public UnmarkCommand(int idx) {
+        this.idx = idx - 1;
     }
 
     @Override

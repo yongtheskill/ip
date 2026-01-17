@@ -2,17 +2,10 @@ package commands;
 
 import tasks.*;
 
-public class AddCommand extends Command {
-    private final String item;
-
-    public AddCommand(String item) {
-        this.item = item;
+public abstract class AddCommand extends Command {
+    public static void getAddMessage(TaskList tasks, Task task) {
+        String response = "Got it. I've added this task:\n " + task + "\nNow you have " + tasks.getSize()
+                + " tasks in the list.";
+        Command.printMessage(response);
     }
-
-    @Override
-    public void execute(TaskList tasks) {
-        tasks.addTask(new Task(this.item));
-        Command.printMessage("added: " + this.item);
-    }
-
 }

@@ -1,8 +1,0 @@
-todo read book
-list
-mark 2
-mark abc
-deadline
-event party /from 8pm /to 10pm
-unknown
-bye

@@ -18,4 +18,3 @@ public class TodoCommand extends AddCommand {
     }
 
 }
-

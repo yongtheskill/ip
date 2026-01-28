@@ -27,16 +27,17 @@ public class EventCommand extends AddCommand {
         try {
             fromDateTime = LocalDateTime.parse(this.from, INPUT_FORMAT);
         } catch (DateTimeParseException e) {
-            throw new InvalidParameterException("Invalid 'from' date format. Please use yyyy-MM-dd HHmm (e.g., 2019-12-02 1800)");
+            throw new InvalidParameterException(
+                    "Invalid 'from' date format. Please use yyyy-MM-dd HHmm (e.g., 2019-12-02 1800)");
         }
         try {
             toDateTime = LocalDateTime.parse(this.to, INPUT_FORMAT);
         } catch (DateTimeParseException e) {
-            throw new InvalidParameterException("Invalid 'to' date format. Please use yyyy-MM-dd HHmm (e.g., 2019-12-02 1800)");
+            throw new InvalidParameterException(
+                    "Invalid 'to' date format. Please use yyyy-MM-dd HHmm (e.g., 2019-12-02 1800)");
         }
         Task newTask = new Event(this.item, fromDateTime, toDateTime);
         tasks.addTask(newTask);
         AddCommand.getAddMessage(tasks, newTask, ui);
     }
 }
-

@@ -24,11 +24,11 @@ public class DeadlineCommand extends AddCommand {
         try {
             byDateTime = LocalDateTime.parse(this.by, INPUT_FORMAT);
         } catch (DateTimeParseException e) {
-            throw new InvalidParameterException("Invalid date format. Please use yyyy-MM-dd HHmm (e.g., 2019-12-02 1800)");
+            throw new InvalidParameterException(
+                    "Invalid date format. Please use yyyy-MM-dd HHmm (e.g., 2019-12-02 1800)");
         }
         Task newTask = new Deadline(this.item, byDateTime);
         tasks.addTask(newTask);
         AddCommand.getAddMessage(tasks, newTask, ui);
     }
 }
-

@@ -19,7 +19,7 @@ public class TaskListTest {
     public void getTask_validIndex_returnsTask() throws InvalidParameterException {
         Task task = new Todo("Read book");
         taskList.addTaskWithoutSaving(task);
-        
+
         Task retrievedTask = taskList.getTask(0);
         assertEquals(task, retrievedTask);
     }
@@ -28,7 +28,7 @@ public class TaskListTest {
     public void getTask_negativeIndex_throwsInvalidParameterException() {
         Task task = new Todo("Read book");
         taskList.addTaskWithoutSaving(task);
-        
+
         assertThrows(InvalidParameterException.class, () -> taskList.getTask(-1));
     }
 
@@ -36,7 +36,7 @@ public class TaskListTest {
     public void getTask_indexEqualToSize_throwsInvalidParameterException() {
         Task task = new Todo("Read book");
         taskList.addTaskWithoutSaving(task);
-        
+
         assertThrows(InvalidParameterException.class, () -> taskList.getTask(1));
     }
 
@@ -44,7 +44,7 @@ public class TaskListTest {
     public void getTask_indexGreaterThanSize_throwsInvalidParameterException() {
         Task task = new Todo("Read book");
         taskList.addTaskWithoutSaving(task);
-        
+
         assertThrows(InvalidParameterException.class, () -> taskList.getTask(5));
     }
 
@@ -61,7 +61,7 @@ public class TaskListTest {
         taskList.addTaskWithoutSaving(task1);
         taskList.addTaskWithoutSaving(task2);
         taskList.addTaskWithoutSaving(task3);
-        
+
         assertEquals(task1, taskList.getTask(0));
         assertEquals(task2, taskList.getTask(1));
         assertEquals(task3, taskList.getTask(2));
@@ -73,9 +73,9 @@ public class TaskListTest {
         Task task2 = new Todo("Task 2");
         taskList.addTaskWithoutSaving(task1);
         taskList.addTaskWithoutSaving(task2);
-        
+
         taskList.deleteTask(0);
-        
+
         assertEquals(1, taskList.getSize());
         assertEquals(task2, taskList.getTask(0));
     }
@@ -84,7 +84,7 @@ public class TaskListTest {
     public void deleteTask_negativeIndex_throwsInvalidParameterException() {
         Task task = new Todo("Read book");
         taskList.addTaskWithoutSaving(task);
-        
+
         assertThrows(InvalidParameterException.class, () -> taskList.deleteTask(-1));
     }
 
@@ -92,7 +92,7 @@ public class TaskListTest {
     public void deleteTask_indexEqualToSize_throwsInvalidParameterException() {
         Task task = new Todo("Read book");
         taskList.addTaskWithoutSaving(task);
-        
+
         assertThrows(InvalidParameterException.class, () -> taskList.deleteTask(1));
     }
 
@@ -100,7 +100,7 @@ public class TaskListTest {
     public void deleteTask_indexGreaterThanSize_throwsInvalidParameterException() {
         Task task = new Todo("Read book");
         taskList.addTaskWithoutSaving(task);
-        
+
         assertThrows(InvalidParameterException.class, () -> taskList.deleteTask(10));
     }
 
@@ -117,9 +117,9 @@ public class TaskListTest {
         taskList.addTaskWithoutSaving(task1);
         taskList.addTaskWithoutSaving(task2);
         taskList.addTaskWithoutSaving(task3);
-        
+
         taskList.deleteTask(2);
-        
+
         assertEquals(2, taskList.getSize());
         assertEquals(task1, taskList.getTask(0));
         assertEquals(task2, taskList.getTask(1));
@@ -133,9 +133,9 @@ public class TaskListTest {
         taskList.addTaskWithoutSaving(task1);
         taskList.addTaskWithoutSaving(task2);
         taskList.addTaskWithoutSaving(task3);
-        
+
         taskList.deleteTask(1);
-        
+
         assertEquals(2, taskList.getSize());
         assertEquals(task1, taskList.getTask(0));
         assertEquals(task3, taskList.getTask(1));
@@ -149,10 +149,10 @@ public class TaskListTest {
         taskList.addTaskWithoutSaving(task1);
         taskList.addTaskWithoutSaving(task2);
         taskList.addTaskWithoutSaving(task3);
-        
+
         taskList.deleteTask(0);
         taskList.deleteTask(0);
-        
+
         assertEquals(1, taskList.getSize());
         assertEquals(task3, taskList.getTask(0));
     }
@@ -161,7 +161,7 @@ public class TaskListTest {
     public void addTaskWithoutSaving_addsTaskToList() {
         Task task = new Todo("Test task");
         taskList.addTaskWithoutSaving(task);
-        
+
         assertEquals(1, taskList.getSize());
     }
 
@@ -175,7 +175,7 @@ public class TaskListTest {
         taskList.addTaskWithoutSaving(new Todo("Task 1"));
         taskList.addTaskWithoutSaving(new Todo("Task 2"));
         taskList.addTaskWithoutSaving(new Todo("Task 3"));
-        
+
         assertEquals(3, taskList.getSize());
     }
 
@@ -191,7 +191,7 @@ public class TaskListTest {
         Task task2 = new Todo("Task 2");
         taskList.addTaskWithoutSaving(task1);
         taskList.addTaskWithoutSaving(task2);
-        
+
         Task[] tasks = taskList.getTasks();
         assertEquals(2, tasks.length);
         assertEquals(task1, tasks[0]);

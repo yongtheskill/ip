@@ -19,4 +19,3 @@ public class ListCommand extends Command {
         ui.showMessage(response.toString().trim());
     }
 }
-

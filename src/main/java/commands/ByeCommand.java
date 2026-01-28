@@ -14,4 +14,3 @@ public class ByeCommand extends Command {
         return true;
     }
 }
-

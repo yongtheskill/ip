@@ -3,6 +3,8 @@ package storage;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import tasks.Task;
@@ -14,6 +16,7 @@ import tasks.Event;
 public class Storage {
     private static final String FILE_PATH = "./data/six.txt";
     private static final String DELIMITER = " | ";
+    private static final DateTimeFormatter STORAGE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
 
     public static TaskList load() {
         TaskList tasks = new TaskList();
@@ -28,7 +31,7 @@ public class Storage {
                 String line = scanner.nextLine();
                 Task task = parseTask(line);
                 if (task != null) {
-                    tasks.addTaskWithoutSaving(task); // prevent immediately writing back
+                    tasks.addTaskWithoutSaving(task);
                 }
             }
         } catch (IOException e) {
@@ -40,7 +43,6 @@ public class Storage {
 
     public static void save(TaskList tasks) {
         try {
-            // Create data directory if it doesn't exist
             File file = new File(FILE_PATH);
             file.getParentFile().mkdirs();
 
@@ -71,12 +73,15 @@ public class Storage {
                 break;
             case "D":
                 if (parts.length >= 4) {
-                    task = new Deadline(title, parts[3]);
+                    LocalDateTime by = LocalDateTime.parse(parts[3], STORAGE_FORMAT);
+                    task = new Deadline(title, by);
                 }
                 break;
             case "E":
                 if (parts.length >= 5) {
-                    task = new Event(title, parts[3], parts[4]);
+                    LocalDateTime from = LocalDateTime.parse(parts[3], STORAGE_FORMAT);
+                    LocalDateTime to = LocalDateTime.parse(parts[4], STORAGE_FORMAT);
+                    task = new Event(title, from, to);
                 }
                 break;
             default:
@@ -96,11 +101,10 @@ public class Storage {
             return "T" + DELIMITER + doneStatus + DELIMITER + task.getTitle();
         } else if (task instanceof Deadline) {
             Deadline deadline = (Deadline) task;
-            return "D" + DELIMITER + doneStatus + DELIMITER + task.getTitle() + DELIMITER + deadline.getBy();
+            return "D" + DELIMITER + doneStatus + DELIMITER + task.getTitle() + DELIMITER + deadline.getBy().format(STORAGE_FORMAT);
         } else if (task instanceof Event) {
             Event event = (Event) task;
-            return "E" + DELIMITER + doneStatus + DELIMITER + task.getTitle() + DELIMITER + event.getFrom() + DELIMITER
-                    + event.getTo();
+            return "E" + DELIMITER + doneStatus + DELIMITER + task.getTitle() + DELIMITER + event.getFrom().format(STORAGE_FORMAT) + DELIMITER + event.getTo().format(STORAGE_FORMAT);
         }
         return "";
     }

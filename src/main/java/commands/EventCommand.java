@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 import tasks.*;
+import ui.Ui;
 import exceptions.InvalidParameterException;
 
 public class EventCommand extends AddCommand {
@@ -20,7 +21,7 @@ public class EventCommand extends AddCommand {
     }
 
     @Override
-    public void execute(TaskList tasks) throws InvalidParameterException {
+    public void execute(TaskList tasks, Ui ui) throws InvalidParameterException {
         LocalDateTime fromDateTime;
         LocalDateTime toDateTime;
         try {
@@ -35,6 +36,7 @@ public class EventCommand extends AddCommand {
         }
         Task newTask = new Event(this.item, fromDateTime, toDateTime);
         tasks.addTask(newTask);
-        AddCommand.getAddMessage(tasks, newTask);
+        AddCommand.getAddMessage(tasks, newTask, ui);
     }
 }
+

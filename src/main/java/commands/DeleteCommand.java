@@ -1,6 +1,7 @@
 package commands;
 
 import tasks.*;
+import ui.Ui;
 import exceptions.InvalidParameterException;
 
 public class DeleteCommand extends Command {
@@ -11,12 +12,13 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks) throws InvalidParameterException {
+    public void execute(TaskList tasks, Ui ui) throws InvalidParameterException {
         Task task = tasks.getTask(idx);
         tasks.deleteTask(idx);
         String response = "Noted. I've removed this task:\n " + task + "\nNow you have " + tasks.getSize()
                 + " tasks(s) in the list.";
-        Command.printMessage(response);
+        ui.showMessage(response);
     }
 
 }
+

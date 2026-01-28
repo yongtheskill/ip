@@ -1,34 +1,28 @@
-import java.util.Scanner;
-
 import commands.Command;
 import tasks.TaskList;
 import storage.Storage;
+import ui.Ui;
 import exceptions.SixException;
 
 public class Six {
     public static void main(String[] args) {
-        String intro = "    ____________________________________________________________\n" +
-                "     Hello! I'm Six\n" +
-                "     What can I do for you?\n" +
-                "    ____________________________________________________________\n";
-        System.out.println(intro);
+        Ui ui = new Ui();
+        ui.showWelcome();
 
         boolean exit = false;
         TaskList tasks = Storage.load();
 
-        Scanner scanner = new Scanner(System.in);
         while (!exit) {
             try {
-                String cmd = scanner.nextLine();
+                String cmd = ui.readCommand();
                 Command command = Parser.parse(cmd);
-                command.execute(tasks);
+                command.execute(tasks, ui);
                 exit = command.isBye();
             } catch (SixException e) {
-                System.out.println("    ____________________________________________________________");
-                System.out.println("     OOPS!!! " + e.getMessage());
-                System.out.println("    ____________________________________________________________\n");
+                ui.showError(e.getMessage());
             }
         }
-        scanner.close();
+        ui.close();
     }
 }
+

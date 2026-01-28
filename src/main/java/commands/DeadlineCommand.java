@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 import tasks.*;
+import ui.Ui;
 import exceptions.InvalidParameterException;
 
 public class DeadlineCommand extends AddCommand {
@@ -18,7 +19,7 @@ public class DeadlineCommand extends AddCommand {
     }
 
     @Override
-    public void execute(TaskList tasks) throws InvalidParameterException {
+    public void execute(TaskList tasks, Ui ui) throws InvalidParameterException {
         LocalDateTime byDateTime;
         try {
             byDateTime = LocalDateTime.parse(this.by, INPUT_FORMAT);
@@ -27,6 +28,7 @@ public class DeadlineCommand extends AddCommand {
         }
         Task newTask = new Deadline(this.item, byDateTime);
         tasks.addTask(newTask);
-        AddCommand.getAddMessage(tasks, newTask);
+        AddCommand.getAddMessage(tasks, newTask, ui);
     }
 }
+

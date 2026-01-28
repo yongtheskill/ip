@@ -1,13 +1,14 @@
 package commands;
 
 import tasks.*;
+import ui.Ui;
 import exceptions.InvalidParameterException;
 
 public class ListCommand extends Command {
     @Override
-    public void execute(TaskList tasks) throws InvalidParameterException {
+    public void execute(TaskList tasks, Ui ui) throws InvalidParameterException {
         if (tasks.getSize() == 0) {
-            Command.printMessage("Your task list is empty.");
+            ui.showMessage("Your task list is empty.");
             return;
         }
 
@@ -15,6 +16,7 @@ public class ListCommand extends Command {
         for (int i = 0; i < tasks.getSize(); i++) {
             response.append((i + 1)).append(". ").append(tasks.getTask(i).toString()).append("\n");
         }
-        Command.printMessage(response.toString().trim());
+        ui.showMessage(response.toString().trim());
     }
 }
+

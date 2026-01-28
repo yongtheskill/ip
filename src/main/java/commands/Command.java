@@ -1,27 +1,13 @@
 package commands;
 
 import tasks.TaskList;
+import ui.Ui;
 import exceptions.SixException;
 
 public abstract class Command {
-    public abstract void execute(TaskList tasks) throws SixException;
+    public abstract void execute(TaskList tasks, Ui ui) throws SixException;
 
     public boolean isBye() {
         return false;
     }
-
-    public static void printMessage(String msg) {
-        StringBuilder formatted = new StringBuilder();
-        formatted.append("    ____________________________________________________________\n");
-
-        String[] lines = msg.split("\n");
-        for (String line : lines) {
-            formatted.append("     ").append(line).append("\n");
-        }
-
-        formatted.append("    ____________________________________________________________\n");
-
-        System.out.println(formatted.toString());
-    }
-
 }

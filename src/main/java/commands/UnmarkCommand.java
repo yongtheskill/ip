@@ -1,6 +1,7 @@
 package commands;
 
 import tasks.*;
+import ui.Ui;
 import exceptions.InvalidParameterException;
 
 public class UnmarkCommand extends Command {
@@ -11,12 +12,13 @@ public class UnmarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks) throws InvalidParameterException {
+    public void execute(TaskList tasks, Ui ui) throws InvalidParameterException {
         Task task = tasks.getTask(idx);
         task.markAsUndone();
         tasks.save();
         String response = "OK, I've marked this task as not done yet:\n " + task;
-        Command.printMessage(response);
+        ui.showMessage(response);
     }
 
 }
+

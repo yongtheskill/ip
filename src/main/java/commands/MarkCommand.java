@@ -1,6 +1,7 @@
 package commands;
 
 import tasks.*;
+import ui.Ui;
 import exceptions.InvalidParameterException;
 
 public class MarkCommand extends Command {
@@ -11,12 +12,13 @@ public class MarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks) throws InvalidParameterException {
+    public void execute(TaskList tasks, Ui ui) throws InvalidParameterException {
         Task task = tasks.getTask(idx);
         task.markAsDone();
         tasks.save();
         String response = "Nice! I've marked this task as done:\n " + task;
-        Command.printMessage(response);
+        ui.showMessage(response);
     }
 
 }
+

@@ -28,4 +28,3 @@ public class Six {
         ui.close();
     }
 }
-

@@ -114,10 +114,12 @@ public class Storage {
             return "T" + DELIMITER + doneStatus + DELIMITER + task.getTitle();
         } else if (task instanceof Deadline) {
             Deadline deadline = (Deadline) task;
-            return "D" + DELIMITER + doneStatus + DELIMITER + task.getTitle() + DELIMITER + deadline.getBy().format(STORAGE_FORMAT);
+            return "D" + DELIMITER + doneStatus + DELIMITER + task.getTitle() + DELIMITER
+                    + deadline.getBy().format(STORAGE_FORMAT);
         } else if (task instanceof Event) {
             Event event = (Event) task;
-            return "E" + DELIMITER + doneStatus + DELIMITER + task.getTitle() + DELIMITER + event.getFrom().format(STORAGE_FORMAT) + DELIMITER + event.getTo().format(STORAGE_FORMAT);
+            return "E" + DELIMITER + doneStatus + DELIMITER + task.getTitle() + DELIMITER
+                    + event.getFrom().format(STORAGE_FORMAT) + DELIMITER + event.getTo().format(STORAGE_FORMAT);
         }
         return "";
     }

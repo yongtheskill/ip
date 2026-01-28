@@ -63,6 +63,17 @@ public class TaskList {
         save();
     }
 
+    public Task[] findTasks(String keyword) {
+        ArrayList<Task> matchingTasks = new ArrayList<>();
+        String lowerKeyword = keyword.toLowerCase();
+        for (Task task : this.tasks) {
+            if (task.getTitle().toLowerCase().contains(lowerKeyword)) {
+                matchingTasks.add(task);
+            }
+        }
+        return matchingTasks.toArray(new Task[0]);
+    }
+
     public void save() {
         Storage.save(this);
     }

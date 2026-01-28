@@ -51,6 +51,10 @@ public class Parser {
             return parseDeleteCommand(cmd);
         }
 
+        if (cmd.equals("find") || cmd.startsWith("find ")) {
+            return parseFindCommand(cmd);
+        }
+
         throw new UnknownCommandException("I don't understand that command! Please try again.");
     }
 
@@ -156,5 +160,16 @@ public class Parser {
         } catch (NumberFormatException e) {
             throw new InvalidParameterException("Task number must be a valid integer!");
         }
+    }
+
+    private static Command parseFindCommand(String cmd) throws InvalidParameterException {
+        if (cmd.equals("find")) {
+            throw new InvalidParameterException("Please specify a keyword to search for!");
+        }
+        String keyword = cmd.substring(5).trim();
+        if (keyword.isEmpty()) {
+            throw new InvalidParameterException("Please specify a keyword to search for!");
+        }
+        return new FindCommand(keyword);
     }
 }

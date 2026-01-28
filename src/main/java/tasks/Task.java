@@ -21,6 +21,10 @@ public abstract class Task {
         return isDone;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     @Override
     public String toString() {
         return "[" + (isDone ? "X" : " ") + "] " + title;

@@ -2,6 +2,7 @@ package tasks;
 
 import java.util.ArrayList;
 import exceptions.InvalidParameterException;
+import storage.Storage;
 
 public class TaskList {
     private ArrayList<Task> tasks;
@@ -11,6 +12,11 @@ public class TaskList {
     }
 
     public void addTask(Task task) {
+        this.tasks.add(task);
+        save();
+    }
+
+    public void addTaskWithoutSaving(Task task) {
         this.tasks.add(task);
     }
 
@@ -36,5 +42,10 @@ public class TaskList {
                     "Task number is out of range! Please enter a valid task number (1 to " + this.tasks.size() + ").");
         }
         this.tasks.remove(index);
+        save();
+    }
+
+    public void save() {
+        Storage.save(this);
     }
 }

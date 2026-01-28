@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 import commands.Command;
 import tasks.TaskList;
+import storage.Storage;
 import exceptions.SixException;
 
 public class Six {
@@ -13,7 +14,7 @@ public class Six {
         System.out.println(intro);
 
         boolean exit = false;
-        TaskList tasks = new TaskList();
+        TaskList tasks = Storage.load();
 
         Scanner scanner = new Scanner(System.in);
         while (!exit) {

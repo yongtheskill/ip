@@ -14,6 +14,7 @@ public class UnmarkCommand extends Command {
     public void execute(TaskList tasks) throws InvalidParameterException {
         Task task = tasks.getTask(idx);
         task.markAsUndone();
+        tasks.save();
         String response = "OK, I've marked this task as not done yet:\n " + task;
         Command.printMessage(response);
     }

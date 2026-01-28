@@ -14,6 +14,7 @@ public class MarkCommand extends Command {
     public void execute(TaskList tasks) throws InvalidParameterException {
         Task task = tasks.getTask(idx);
         task.markAsDone();
+        tasks.save();
         String response = "Nice! I've marked this task as done:\n " + task;
         Command.printMessage(response);
     }

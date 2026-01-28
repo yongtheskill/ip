@@ -4,13 +4,24 @@ import java.util.ArrayList;
 import exceptions.InvalidParameterException;
 import storage.Storage;
 
+/**
+ * Manages a list of tasks.
+ */
 public class TaskList {
     private ArrayList<Task> tasks;
 
+    /**
+     * Creates a new empty task list.
+     */
     public TaskList() {
         this.tasks = new ArrayList<>();
     }
 
+    /**
+     * Adds a task to the list and saves it to storage.
+     *
+     * @param task The task to add.
+     */
     public void addTask(Task task) {
         this.tasks.add(task);
         save();
@@ -24,6 +35,13 @@ public class TaskList {
         return this.tasks.toArray(new Task[0]);
     }
 
+    /**
+     * Gets a task at the specified index.
+     *
+     * @param index The index of the task to retrieve.
+     * @return The task at the specified index.
+     * @throws InvalidParameterException If the index is out of range.
+     */
     public Task getTask(int index) throws InvalidParameterException {
         if (index < 0 || index >= this.tasks.size()) {
             throw new InvalidParameterException(

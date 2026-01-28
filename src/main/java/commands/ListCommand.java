@@ -4,6 +4,9 @@ import tasks.*;
 import ui.Ui;
 import exceptions.InvalidParameterException;
 
+/**
+ * Command to list all tasks.
+ */
 public class ListCommand extends Command {
     @Override
     public void execute(TaskList tasks, Ui ui) throws InvalidParameterException {

@@ -2,10 +2,16 @@ package ui;
 
 import java.util.Scanner;
 
+/**
+ * Handles user interface interactions.
+ */
 public class Ui {
     private static final String DIVIDER = "    ____________________________________________________________";
     private final Scanner scanner;
 
+    /**
+     * Creates a new UI instance.
+     */
     public Ui() {
         this.scanner = new Scanner(System.in);
     }
@@ -22,6 +28,11 @@ public class Ui {
         return scanner.nextLine();
     }
 
+    /**
+     * Displays a message to the user.
+     *
+     * @param message The message to display.
+     */
     public void showMessage(String message) {
         StringBuilder formatted = new StringBuilder();
         formatted.append(DIVIDER).append("\n");

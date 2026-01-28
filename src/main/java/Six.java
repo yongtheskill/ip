@@ -4,6 +4,9 @@ import storage.Storage;
 import ui.Ui;
 import exceptions.SixException;
 
+/**
+ * Main class for the Six chatbot application.
+ */
 public class Six {
     public static void main(String[] args) {
         Ui ui = new Ui();

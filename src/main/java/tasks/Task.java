@@ -1,14 +1,25 @@
 package tasks;
 
+/**
+ * Represents a task with a title and completion status.
+ */
 public abstract class Task {
     String title;
     boolean isDone;
 
+    /**
+     * Creates a new task with the given title.
+     *
+     * @param title The title of the task.
+     */
     public Task(String title) {
         this.title = title;
         this.isDone = false;
     }
 
+    /**
+     * Marks the task as done.
+     */
     public void markAsDone() {
         this.isDone = true;
     }

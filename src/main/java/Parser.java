@@ -1,7 +1,17 @@
 import commands.*;
 import exceptions.*;
 
+/**
+ * Parses user input commands and converts them into executable Command objects.
+ */
 public class Parser {
+    /**
+     * Parses a command string and returns the corresponding Command object.
+     *
+     * @param cmd The command string to parse.
+     * @return The Command object corresponding to the input.
+     * @throws SixException If the command is invalid or unknown.
+     */
     public static Command parse(String cmd) throws SixException {
         if (cmd == null || cmd.trim().isEmpty()) {
             throw new InvalidParameterException("Command cannot be empty!");

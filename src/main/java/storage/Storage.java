@@ -13,11 +13,19 @@ import tasks.Todo;
 import tasks.Deadline;
 import tasks.Event;
 
+/**
+ * Handles loading and saving of tasks to the file system.
+ */
 public class Storage {
     private static final String FILE_PATH = "./data/six.txt";
     private static final String DELIMITER = " | ";
     private static final DateTimeFormatter STORAGE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
 
+    /**
+     * Loads tasks from the file system.
+     *
+     * @return A TaskList containing all loaded tasks.
+     */
     public static TaskList load() {
         TaskList tasks = new TaskList();
         File file = new File(FILE_PATH);
@@ -41,6 +49,11 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Saves tasks to the file system.
+     *
+     * @param tasks The task list to save.
+     */
     public static void save(TaskList tasks) {
         try {
             File file = new File(FILE_PATH);

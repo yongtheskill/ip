@@ -1,0 +1,101 @@
+.root {
+  -fx-background-color: #f5f5f5;
+  -fx-font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  -fx-font-size: 14px;
+}
+
+.dialog-container {
+  -fx-background-color: #ffffff;
+  -fx-spacing: 8px;
+}
+
+.scroll-pane {
+  -fx-background-color: #ffffff;
+  -fx-border-color: #e0e0e0;
+  -fx-border-width: 0 0 1 0;
+}
+
+.scroll-pane > .viewport {
+  -fx-background-color: #ffffff;
+}
+
+.scroll-pane .scroll-bar:vertical {
+  -fx-background-color: #f5f5f5;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb {
+  -fx-background-color: #c0c0c0;
+  -fx-background-radius: 5px;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb:hover {
+  -fx-background-color: #a0a0a0;
+}
+
+.dialog-label {
+  -fx-background-color: #e3f2fd;
+  -fx-background-radius: 15px;
+  -fx-padding: 10px 15px;
+  -fx-text-fill: #1a1a1a;
+  -fx-wrap-text: true;
+  -fx-max-width: 280px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 4, 0, 0, 1);
+}
+
+#dialogContainer > * > .dialog-label {
+  -fx-background-color: #2196f3;
+  -fx-text-fill: #ffffff;
+}
+
+#dialogContainer > *:odd > .dialog-label {
+  -fx-background-color: #eeeeee;
+  -fx-text-fill: #1a1a1a;
+}
+
+.input-area {
+  -fx-background-color: #fafafa;
+  -fx-border-color: #e0e0e0;
+  -fx-border-width: 1 0 0 0;
+  -fx-padding: 5px;
+}
+
+.text-field {
+  -fx-background-color: #ffffff;
+  -fx-background-radius: 20px;
+  -fx-border-color: #d0d0d0;
+  -fx-border-radius: 20px;
+  -fx-border-width: 1px;
+  -fx-padding: 8px 15px;
+  -fx-font-size: 14px;
+  -fx-prompt-text-fill: #999999;
+}
+
+.text-field:focused {
+  -fx-border-color: #2196f3;
+  -fx-border-width: 2px;
+  -fx-effect: dropshadow(gaussian, rgba(33, 150, 243, 0.3), 5, 0, 0, 0);
+}
+
+.send-button {
+  -fx-background-color: #2196f3;
+  -fx-text-fill: #ffffff;
+  -fx-background-radius: 20px;
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+  -fx-cursor: hand;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 3, 0, 0, 1);
+}
+
+.send-button:hover {
+  -fx-background-color: #1976d2;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 5, 0, 0, 2);
+}
+
+.send-button:pressed {
+  -fx-background-color: #0d47a1;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 2, 0, 0, 1);
+}
+
+.image-view {
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 3, 0, 0, 1);
+}

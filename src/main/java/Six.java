@@ -12,15 +12,15 @@ public class Six {
         Ui ui = new Ui();
         ui.showWelcome();
 
-        boolean exit = false;
+        boolean isExit = false;
         TaskList tasks = Storage.load();
 
-        while (!exit) {
+        while (!isExit) {
             try {
                 String cmd = ui.readCommand();
                 Command command = Parser.parse(cmd);
                 command.execute(tasks, ui);
-                exit = command.isBye();
+                isExit = command.isBye();
             } catch (SixException e) {
                 ui.showError(e.getMessage());
             }

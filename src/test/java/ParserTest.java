@@ -1,10 +1,19 @@
-import commands.*;
+import commands.ByeCommand;
+import commands.Command;
+import commands.DeadlineCommand;
+import commands.DeleteCommand;
+import commands.EventCommand;
+import commands.ListCommand;
+import commands.MarkCommand;
+import commands.TodoCommand;
+import commands.UnmarkCommand;
 import exceptions.InvalidParameterException;
 import exceptions.SixException;
 import exceptions.UnknownCommandException;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ParserTest {
 

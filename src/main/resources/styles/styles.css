@@ -33,7 +33,7 @@
 }
 
 .dialog-label {
-  -fx-background-color: #e3f2fd;
+  -fx-background-color: #fff3e0;
   -fx-background-radius: 15px;
   -fx-padding: 10px 15px;
   -fx-text-fill: #1a1a1a;
@@ -43,7 +43,7 @@
 }
 
 #dialogContainer > * > .dialog-label {
-  -fx-background-color: #2196f3;
+  -fx-background-color: #ff9800;
   -fx-text-fill: #ffffff;
 }
 
@@ -71,13 +71,13 @@
 }
 
 .text-field:focused {
-  -fx-border-color: #2196f3;
+  -fx-border-color: #ff9800;
   -fx-border-width: 2px;
-  -fx-effect: dropshadow(gaussian, rgba(33, 150, 243, 0.3), 5, 0, 0, 0);
+  -fx-effect: dropshadow(gaussian, rgba(255, 152, 0, 0.3), 5, 0, 0, 0);
 }
 
 .send-button {
-  -fx-background-color: #2196f3;
+  -fx-background-color: #ff9800;
   -fx-text-fill: #ffffff;
   -fx-background-radius: 20px;
   -fx-font-size: 14px;
@@ -87,12 +87,12 @@
 }
 
 .send-button:hover {
-  -fx-background-color: #1976d2;
+  -fx-background-color: #f57c00;
   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 5, 0, 0, 2);
 }
 
 .send-button:pressed {
-  -fx-background-color: #0d47a1;
+  -fx-background-color: #e65100;
   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 2, 0, 0, 1);
 }
 

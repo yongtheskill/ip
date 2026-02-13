@@ -1,6 +1,7 @@
 package commands;
 
-import tasks.*;
+import tasks.Task;
+import tasks.TaskList;
 import ui.Ui;
 
 public abstract class AddCommand extends Command {

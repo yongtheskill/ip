@@ -1,6 +1,8 @@
 package commands;
 
-import tasks.*;
+import tasks.Task;
+import tasks.TaskList;
+import tasks.Todo;
 import ui.Ui;
 
 public class TodoCommand extends AddCommand {

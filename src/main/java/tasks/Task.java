@@ -13,6 +13,8 @@ public abstract class Task {
      * @param title The title of the task.
      */
     public Task(String title) {
+        // Precondition: title should not be null or empty
+        assert title != null && !title.trim().isEmpty() : "Task title should not be null or empty";
         this.title = title;
         this.isDone = false;
     }

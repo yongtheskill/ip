@@ -55,6 +55,10 @@ public class Parser {
             return parseFindCommand(cmd);
         }
 
+        if (cmd.equals("remind") || cmd.startsWith("remind ")) {
+            return parseRemindCommand(cmd);
+        }
+
         throw new UnknownCommandException("I don't understand that command! Please try again.");
     }
 
@@ -171,5 +175,26 @@ public class Parser {
             throw new InvalidParameterException("Please specify a keyword to search for!");
         }
         return new FindCommand(keyword);
+    }
+
+    private static Command parseRemindCommand(String cmd) throws InvalidParameterException {
+        if (cmd.equals("remind")) {
+            return new RemindCommand();
+        }
+
+        String daysText = cmd.substring(7).trim();
+        if (daysText.isEmpty()) {
+            throw new InvalidParameterException("Please specify the number of days as a positive integer!");
+        }
+
+        try {
+            int days = Integer.parseInt(daysText);
+            if (days <= 0) {
+                throw new InvalidParameterException("Please specify the number of days as a positive integer!");
+            }
+            return new RemindCommand(days);
+        } catch (NumberFormatException e) {
+            throw new InvalidParameterException("Please specify the number of days as a positive integer!");
+        }
     }
 }

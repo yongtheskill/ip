@@ -167,4 +167,31 @@ public class ParserTest {
         Command result = Parser.parse("mark    5");
         assertTrue(result instanceof MarkCommand);
     }
+
+    @Test
+    public void parse_remindCommandWithoutDays_returnsRemindCommand() throws SixException {
+        Command result = Parser.parse("remind");
+        assertTrue(result instanceof RemindCommand);
+    }
+
+    @Test
+    public void parse_remindCommandWithValidDays_returnsRemindCommand() throws SixException {
+        Command result = Parser.parse("remind 3");
+        assertTrue(result instanceof RemindCommand);
+    }
+
+    @Test
+    public void parse_remindCommandWithZeroDays_throwsInvalidParameterException() {
+        assertThrows(InvalidParameterException.class, () -> Parser.parse("remind 0"));
+    }
+
+    @Test
+    public void parse_remindCommandWithNegativeDays_throwsInvalidParameterException() {
+        assertThrows(InvalidParameterException.class, () -> Parser.parse("remind -2"));
+    }
+
+    @Test
+    public void parse_remindCommandWithNonInteger_throwsInvalidParameterException() {
+        assertThrows(InvalidParameterException.class, () -> Parser.parse("remind tomorrow"));
+    }
 }

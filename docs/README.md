@@ -4,12 +4,9 @@ Six is a personal task manager chatbot for tracking todos, deadlines, and events
 
 ## Quick start
 
-1. Ensure you have Java 17 installed.
-2. From the project root, run:
-  - `./gradlew run` (macOS/Linux)
-  - `gradlew.bat run` (Windows)
-3. Type commands into the app.
-4. Use `bye` to exit.
+1. Run the jar file.
+2. Type commands into the app.
+3. Use `bye` to exit.
 
 Tasks are automatically saved to `./data/six.txt`.
 
@@ -18,7 +15,7 @@ Tasks are automatically saved to `./data/six.txt`.
 - Commands are lowercase keywords such as `todo`, `list`, `deadline`.
 - Task numbers are **1-based** (e.g. first task is `1`).
 - Date/time for `deadline` and `event` must use: `yyyy-MM-dd HHmm`
- 	- Example: `2026-03-05 1830`
+  - Example: `2026-03-05 1830`
 
 ## Features
 

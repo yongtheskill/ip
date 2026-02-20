@@ -1,29 +1,132 @@
-# Duke User Guide
+# Six User Guide
 
-// Update the title above to match the actual product name
+Six is a personal task manager chatbot for tracking todos, deadlines, and events from the command line.
 
-// Product screenshot goes here
+## Quick start
 
-// Product intro goes here
+1. Ensure you have Java 17 installed.
+2. From the project root, run:
+  - `./gradlew run` (macOS/Linux)
+  - `gradlew.bat run` (Windows)
+3. Type commands into the app.
+4. Use `bye` to exit.
 
-## Adding deadlines
+Tasks are automatically saved to `./data/six.txt`.
 
-// Describe the action and its outcome.
+## Command format
 
-// Give examples of usage
+- Commands are lowercase keywords such as `todo`, `list`, `deadline`.
+- Task numbers are **1-based** (e.g. first task is `1`).
+- Date/time for `deadline` and `event` must use: `yyyy-MM-dd HHmm`
+ 	- Example: `2026-03-05 1830`
 
-Example: `keyword (optional arguments)`
+## Features
 
-// A description of the expected outcome goes here
+### Add a todo
 
-```
-expected output
-```
+Adds a basic task without date/time.
 
-## Feature ABC
+Format: `todo DESCRIPTION`
 
-// Feature details
+Example:
+`todo submit CS2103 iP`
 
-## Feature XYZ
+### Add a deadline
 
-// Feature details
+Adds a task that is due at a specific date/time.
+
+Format: `deadline DESCRIPTION /by yyyy-MM-dd HHmm`
+
+Example:
+`deadline submit report /by 2026-03-10 2359`
+
+### Add an event
+
+Adds a task with a start and end date/time.
+
+Format: `event DESCRIPTION /from yyyy-MM-dd HHmm /to yyyy-MM-dd HHmm`
+
+Example:
+`event project meeting /from 2026-03-06 1400 /to 2026-03-06 1600`
+
+### List tasks
+
+Shows all tasks in your list.
+
+Format: `list`
+
+### Mark task as done
+
+Marks a task as completed.
+
+Format: `mark TASK_NUMBER`
+
+Example:
+`mark 2`
+
+### Unmark task
+
+Marks a completed task as not done.
+
+Format: `unmark TASK_NUMBER`
+
+Example:
+`unmark 2`
+
+### Delete task
+
+Removes a task from the list.
+
+Format: `delete TASK_NUMBER`
+
+Example:
+`delete 3`
+
+### Find tasks
+
+Finds tasks whose descriptions contain a keyword (case-insensitive).
+
+Format: `find KEYWORD`
+
+Example:
+`find report`
+
+### Show reminders
+
+Shows upcoming incomplete deadlines/events within a given number of days.
+
+Formats:
+
+- `remind` (defaults to 7 days)
+- `remind DAYS`
+
+Examples:
+
+- `remind`
+- `remind 3`
+
+### Exit
+
+Exits the application.
+
+Format: `bye`
+
+## Error handling notes
+
+- Missing required parameters will show an error message explaining what is needed.
+- Invalid task numbers (e.g. 0, negative, out of range, or non-integers) are rejected.
+- Invalid date/time formats for deadlines/events are rejected.
+
+## Command summary
+
+- `todo DESCRIPTION`
+- `deadline DESCRIPTION /by yyyy-MM-dd HHmm`
+- `event DESCRIPTION /from yyyy-MM-dd HHmm /to yyyy-MM-dd HHmm`
+- `list`
+- `mark TASK_NUMBER`
+- `unmark TASK_NUMBER`
+- `delete TASK_NUMBER`
+- `find KEYWORD`
+- `remind`
+- `remind DAYS`
+- `bye`

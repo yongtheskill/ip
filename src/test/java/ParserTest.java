@@ -5,6 +5,7 @@ import commands.DeleteCommand;
 import commands.EventCommand;
 import commands.ListCommand;
 import commands.MarkCommand;
+import commands.RemindCommand;
 import commands.TodoCommand;
 import commands.UnmarkCommand;
 import exceptions.InvalidParameterException;

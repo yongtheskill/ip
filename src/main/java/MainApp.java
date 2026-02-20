@@ -18,7 +18,7 @@ public class MainApp extends Application {
             scene.getStylesheets().add(getClass().getResource("/styles/styles.css").toExternalForm());
 
             stage.setScene(scene);
-            stage.setTitle("Six - Your Personal Task Manager");
+            stage.setTitle("Six");
             stage.setMinHeight(400);
             stage.setMinWidth(350);
             stage.show();
